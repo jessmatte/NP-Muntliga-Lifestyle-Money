@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking Practice: Money, Lifestyle & Choices (Engelska 1 / Delprov A)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            slateblue: {
+              900: '#132742',
+              800: '#1e3a5f',
+              700: '#2a4d7a',
+              100: '#e8eff7',
+              50: '#f3f7fb',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      -webkit-font-smoothing: antialiased;
+    }
+    .np-card-shadow {
+      box-shadow: 0 4px 20px -2px rgba(30, 58, 95, 0.08), 0 2px 6px -1px rgba(30, 58, 95, 0.04);
+    }
+    .topic-pill {
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .topic-pill:hover {
+      transform: translateY(-2px);
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Practice Mode Banner -->
+  <div class="bg-amber-50 border-b border-amber-200 px-4 py-2 text-xs sm:text-sm text-amber-900">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500 text-white tracking-wide uppercase">
+          Practice Mode
+        </span>
+        <span class="font-medium">
+          Includes optional <strong>Language Support</strong> (Not available on the real National Test / Delprov A).
+        </span>
+      </div>
+      <div class="text-xs text-amber-800/80 font-medium hidden sm:block">
+        Engelska 1 • Muntlig produktion och interaktion
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header (Global Timer Removed; Embedded Inside Each Step) -->
+  <header class="bg-slateblue-800 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <!-- Title & Subtitle -->
+        <div>
+          <div class="flex items-center gap-2 text-slateblue-100 text-xs font-semibold uppercase tracking-wider mb-1">
+            <span>Engelska 1 / Delprov A Format</span>
+            <span>•</span>
+            <span>Focus: Speaking</span>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white">
+            Money, Lifestyle &amp; Choices
+          </h1>
+          <p class="text-xs sm:text-sm text-slateblue-100 mt-0.5">
+            Practice Edition with Scaffolding — Pair Interaction &amp; Discussion
+          </p>
+        </div>
+
+        <!-- Language Support Drawer Toggle -->
+        <div class="flex items-center gap-3">
+          <button onclick="toggleSupportDrawer()" id="supportToggleBtn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm shadow-sm transition cursor-pointer">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            <span>Language Support (Practice Only)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Chromebook Role & Single-Card Assignment Bar -->
+  <section class="bg-white border-b border-slate-200 px-4 sm:px-6 py-3">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 mr-1">1. Choose Your Role:</span>
+        <button onclick="selectRole('A')" id="roleBtnA" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition cursor-pointer bg-slateblue-800 text-white border-slateblue-800">
+          Student A (Pool of 3 Cards)
+        </button>
+        <button onclick="selectRole('B')" id="roleBtnB" class="px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition cursor-pointer bg-white text-slate-700 border-slate-300 hover:bg-slate-50">
+          Student B (Pool of 3 Cards)
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2.5">
+        <span id="roundTrackerBadge" class="inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200">
+          Round 1 / 3
+        </span>
+        <span id="currentCardBadge" class="inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-bold bg-slateblue-100 text-slateblue-800">
+          Student A • Active Card Assigned
+        </span>
+        <button id="dealNextBtn" onclick="startNextRound()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slateblue-800 hover:bg-slateblue-700 disabled:bg-slate-300 disabled:text-slate-500 disabled:cursor-not-allowed text-white text-xs sm:text-sm font-bold shadow-sm transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          <span id="dealNextBtnText">Try Another Card (2 left)</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Navigation Tabs (Mirroring NP Delprov A) -->
+  <nav class="bg-slate-100 border-b border-slate-200 px-4 sm:px-6 pt-3">
+    <div class="max-w-7xl mx-auto flex space-x-2 overflow-x-auto">
+      <button onclick="switchTab('prep')" id="tabBtn-prep" class="px-4 py-2.5 rounded-t-xl font-bold text-xs sm:text-sm border-t border-x transition whitespace-nowrap cursor-pointer bg-white text-slateblue-800 border-slate-200 shadow-sm flex items-center gap-1.5">
+        <span id="prepLockTabIcon" class="hidden text-rose-600">🔒</span>
+        <span>Step 1: Preparation &amp; Key Words</span>
+      </button>
+      <button onclick="switchTab('part1')" id="tabBtn-part1" class="px-4 py-2.5 rounded-t-xl font-semibold text-xs sm:text-sm border-t border-x transition whitespace-nowrap cursor-pointer bg-slate-200/70 text-slate-600 border-transparent hover:bg-white/60">
+        Step 2: Part 1 — Present &amp; Interact
+      </button>
+      <button onclick="switchTab('part2')" id="tabBtn-part2" class="px-4 py-2.5 rounded-t-xl font-semibold text-xs sm:text-sm border-t border-x transition whitespace-nowrap cursor-pointer bg-slate-200/70 text-slate-600 border-transparent hover:bg-white/60">
+        Step 3: Part 2 — Interact &amp; Discuss
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Workspace -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
+
+    <!-- ==================== TAB 1: PREPARATION & MY CARD ==================== -->
+    <div id="tab-prep" class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Left Column: Step 1 Embedded Timer & Skolverket Instructions -->
+        <div class="lg:col-span-5 space-y-5">
+          <!-- Embedded Step 1 Timer -->
+          <div id="timerBox-prep" class="bg-white rounded-2xl border-2 border-slateblue-800/20 p-5 np-card-shadow">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-wider text-slateblue-800">Step 1 Preparation Timer</span>
+                <p class="text-xs text-slate-500 mt-0.5">When time reaches 0:00, your card locks automatically.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slateblue-900 text-white px-4 py-2 rounded-xl">
+                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span id="timerDisplay-prep" class="font-mono text-xl font-extrabold tabular-nums">04:00</span>
+              </div>
+            </div>
+            <div class="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <button id="timerToggleBtn-prep" onclick="toggleStepTimer('prep')" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer">
+                  Pause
+                </button>
+                <button id="timerResetBtn-prep" onclick="resetStepTimer('prep')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition cursor-pointer">
+                  Reset (4m)
+                </button>
+              </div>
+              <button id="finishPrepBtn" onclick="lockStep1AndAdvance()" class="px-3.5 py-1.5 rounded-xl bg-slateblue-800 hover:bg-slateblue-700 text-white text-xs font-bold transition cursor-pointer">
+                Finish Prep &amp; Lock Card →
+              </button>
+            </div>
+          </div>
+
+          <!-- Task Overview Box -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 np-card-shadow">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slateblue-50 text-slateblue-800 text-xs font-bold mb-3">
+              <span>Task Overview</span>
+            </div>
+            <h2 class="text-xl font-bold text-slateblue-900 mb-3">Money, Lifestyle &amp; Choices?</h2>
+            <p class="text-slate-700 text-sm leading-relaxed mb-4">
+              We make choices every day about how we earn, spend, and save our money. Some people focus on saving for the future or living simply, while others want comfort, freedom, and experiences right now.
+            </p>
+
+            <div class="bg-slateblue-50 rounded-xl p-4 border border-slateblue-100">
+              <h3 class="font-bold text-slateblue-900 text-sm mb-2">Preparation Rules (NP Style)</h3>
+              <ul class="text-xs text-slate-700 space-y-2">
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-600 font-bold">1.</span>
+                  <span>Read your assigned card and decide if you <strong>agree or disagree</strong>.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-600 font-bold">2.</span>
+                  <span>Write your own <strong>single-word key words</strong> (no sentences or phrases).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-emerald-600 font-bold">3.</span>
+                  <span>Once prep ends, <strong>only your key words</strong> will be visible in Step 2!</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Persona Card + Single-Word Key Word Builder (Or Locked State) -->
+        <div class="lg:col-span-7">
+          
+          <!-- UNLOCKED PREP WORKSPACE -->
+          <div id="prepUnlockedContainer" class="bg-white rounded-2xl border-2 border-slateblue-800/20 overflow-hidden np-card-shadow">
+            <!-- Card Top Strip -->
+            <div class="bg-slateblue-800 px-6 py-3.5 flex items-center justify-between text-white">
+              <div>
+                <span id="prepRoleRoundLabel" class="text-xs uppercase tracking-wider text-slateblue-100 font-semibold">Student A • Round 1 of 3</span>
+                <h3 id="prepCardTitle" class="text-lg font-bold">Liam's Perspective</h3>
+              </div>
+              <span id="prepCardTopicTag" class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+                Quality Tools vs. Cheap Fast Fashion
+              </span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-6 sm:p-7 space-y-6">
+              <div>
+                <div class="flex items-center gap-3 mb-3">
+                  <div id="prepAvatar" class="w-11 h-11 rounded-2xl bg-slateblue-100 text-slateblue-800 flex items-center justify-center font-extrabold text-lg border border-slateblue-200">
+                    L
+                  </div>
+                  <div>
+                    <h4 id="prepPersonaName" class="text-base font-bold text-slate-900">Liam:</h4>
+                    <p class="text-xs text-slate-500 font-medium">Read carefully before the timer runs out</p>
+                  </div>
+                </div>
+
+                <blockquote id="prepCardText" class="text-slate-800 text-base leading-relaxed bg-slate-50 p-5 rounded-xl border border-slate-200/80">
+                  <!-- Populated dynamically -->
+                </blockquote>
+              </div>
+
+              <!-- Student Single-Word Key Word Builder -->
+              <div class="bg-amber-50/60 rounded-2xl p-5 border border-amber-200">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                  <label for="keywordInput" class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+                    <span>My Key Words (1 Word at a Time)</span>
+                    <span id="keywordCountBadge" class="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-200/80 text-amber-950">0 / 12 words</span>
+                  </label>
+                  <span class="text-xs text-slate-600 font-medium">No spaces or sentences allowed</span>
+                </div>
+
+                <form onsubmit="handleAddKeyword(event)" class="flex gap-2">
+                  <input 
+                    type="text" 
+                    id="keywordInput" 
+                    autocomplete="off"
+                    oninput="sanitizeKeywordInput(this)"
+                    placeholder="Type ONE word (e.g., quality)..."
+                    class="flex-1 bg-white border border-slate-300 rounded-xl px-3.5 py-2 text-sm font-medium text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slateblue-800"
+                  />
+                  <button type="submit" class="px-4 py-2 rounded-xl bg-slateblue-800 hover:bg-slateblue-700 text-white text-xs sm:text-sm font-bold transition cursor-pointer shrink-0">
+                    + Add Word
+                  </button>
+                </form>
+
+                <!-- Inline Single-Word Warning -->
+                <p id="keywordWarning" class="hidden mt-2 text-xs font-bold text-rose-700 bg-rose-50 border border-rose-200 px-3 py-1.5 rounded-lg">
+                  One word only — no phrases or sentences, just like on the National Test!
+                </p>
+
+                <!-- Student's Added Key Word Pills -->
+                <div id="studentKeywordsList" class="mt-3.5 flex flex-wrap gap-2 min-h-[38px] items-center">
+                  <span class="text-xs text-slate-500 italic">No key words added yet. Add single words you want to remember for Step 2!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LOCKED PREP STATE (Shown when time expires or user finishes prep) -->
+          <div id="prepLockedContainer" class="hidden bg-white rounded-2xl border-2 border-rose-300 p-8 text-center np-card-shadow space-y-4">
+            <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center mx-auto text-2xl font-bold">
+              🔒
+            </div>
+            <div>
+              <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-extrabold uppercase tracking-wider">
+                Preparation Time Complete
+              </span>
+              <h3 class="text-xl font-bold text-slate-900 mt-2">Step 1 is Locked for This Round</h3>
+              <p class="text-sm text-slate-600 max-w-md mx-auto mt-1">
+                Just like on the real National Test, your original card text is now hidden. Move to <strong>Step 2 (Part 1)</strong> to present using only your saved key words!
+              </p>
+            </div>
+            <div class="pt-2">
+              <button onclick="switchTab('part1')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slateblue-800 hover:bg-slateblue-700 text-white text-sm font-bold shadow-sm transition cursor-pointer">
+                <span>Go to Step 2: Present &amp; Interact</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: PART 1 — PRESENT & INTERACT ==================== -->
+    <div id="tab-part1" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Left: Embedded Step 2 Timer & Skolverket Part 1 Prompts -->
+        <div class="lg:col-span-6 space-y-5">
+          <!-- Embedded Step 2 Timer -->
+          <div class="bg-white rounded-2xl border-2 border-slateblue-800/20 p-5 np-card-shadow">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <span class="text-xs font-extrabold uppercase tracking-wider text-slateblue-800">Step 2 (Part 1) Timer</span>
+                <p class="text-xs text-slate-500 mt-0.5">Present your card (~1–2 min each) and discuss reactions.</p>
+              </div>
+              <div class="flex items-center gap-2 bg-slateblue-900 text-white px-4 py-2 rounded-xl">
+                <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span id="timerDisplay-part1" class="font-mono text-xl font-extrabold tabular-nums">05:00</span>
+              </div>
+            </div>
+            <div class="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <button id="timerToggleBtn-part1" onclick="toggleStepTimer('part1')" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer">
+                  Start
+                </button>
+                <button onclick="resetStepTimer('part1')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition cursor-pointer">
+                  Reset (5m)
+                </button>
+              </div>
+              <button onclick="switchTab('part2')" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slateblue-800 hover:bg-slateblue-700 text-white text-xs font-bold transition cursor-pointer">
+                <span>Next: Step 3 (Part 2)</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Skolverket Part 1 Instructions -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 np-card-shadow space-y-4">
+            <span class="inline-block px-3 py-1 rounded-full bg-slateblue-800 text-white text-xs font-bold uppercase tracking-wide">
+              Part 1 — Present and Interact
+            </span>
+
+            <!-- Step A -->
+            <div class="p-4 rounded-xl bg-slateblue-50 border border-slateblue-100">
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-lg bg-slateblue-800 text-white font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">A</span>
+                <div>
+                  <h3 class="font-bold text-slateblue-900 text-sm sm:text-base mb-1">Present your card</h3>
+                  <p class="text-slate-700 text-sm leading-relaxed">
+                    In your own words, tell your partner about what it says on your card. Explain why you agree/disagree. Give examples from your own experience or that you have heard about.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step B -->
+            <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200/80">
+              <div class="flex items-start gap-3">
+                <span class="w-7 h-7 rounded-lg bg-emerald-700 text-white font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">B</span>
+                <div>
+                  <h3 class="font-bold text-emerald-950 text-sm sm:text-base mb-1">Discuss with your partner</h3>
+                  <p class="text-slate-700 text-sm leading-relaxed">
+                    What are your reactions to the information on your cards? Do you agree/disagree? Why – Why not?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Student's Own Key Words Only (Original Card Locked Out) -->
+        <div class="lg:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 np-card-shadow">
+          <div class="flex items-center justify-between gap-2 pb-4 border-b border-slate-100 mb-4">
+            <div>
+              <h3 id="p1PersonaHeader" class="font-bold text-slate-900 text-base">Your Key Word Notes</h3>
+              <p class="text-xs text-slate-500">Original card text is hidden — speak in your own words!</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center gap-1">
+              <span>🔒</span> Card Hidden
+            </span>
+          </div>
+
+          <div class="bg-amber-50/60 rounded-2xl p-6 border border-amber-200 min-h-[220px] flex flex-col justify-between">
+            <div>
+              <span class="inline-block text-xs font-extrabold uppercase tracking-wider text-amber-900 mb-3">
+                My Single-Word Memory Prompts:
+              </span>
+              <div id="p1StudentKeywordsDisplay" class="flex flex-wrap gap-2.5">
+                <!-- Populated dynamically from student's Step 1 words -->
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-amber-200/70 text-xs text-slate-600 flex items-center justify-between">
+              <span>Remember to ask your partner follow-up questions after presenting!</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: PART 2 — INTERACT & DISCUSS ==================== -->
+    <div id="tab-part2" class="hidden space-y-6">
+      
+      <!-- Top Instructions Box + Embedded Step 3 Timer -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 np-card-shadow">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div class="max-w-3xl">
+            <span class="inline-block px-3 py-1 rounded-full bg-slateblue-800 text-white text-xs font-bold uppercase tracking-wide mb-2">
+              Part 2 — Interact and Discuss
+            </span>
+            <p class="text-slate-800 text-sm sm:text-base leading-relaxed">
+              Below, there are different choices related to <strong>money and lifestyle</strong>. Choose <strong>at least two each</strong> that you want to discuss and that you did not talk about in Part 1. Use the questions to get your discussion going. You could of course add ideas of your own as well.
+            </p>
+          </div>
+
+          <!-- Embedded Step 3 Timer -->
+          <div class="bg-slateblue-50 border border-slateblue-200 rounded-2xl p-3.5 shrink-0 flex flex-col gap-2">
+            <div class="flex items-center justify-between gap-4">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-slateblue-900">Step 3 Timer</span>
+              <div class="flex items-center gap-1.5 bg-slateblue-900 text-white px-3 py-1 rounded-lg">
+                <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span id="timerDisplay-part2" class="font-mono text-base font-extrabold tabular-nums">08:00</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button id="timerToggleBtn-part2" onclick="toggleStepTimer('part2')" class="flex-1 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition cursor-pointer">
+                Start
+              </button>
+              <button onclick="resetStepTimer('part2')" class="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold transition cursor-pointer">
+                Reset (8m)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guiding Bullet Questions (Exact NP Structure) -->
+        <div class="mt-4 bg-slateblue-50/80 rounded-xl p-4 border border-slateblue-100">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <p class="font-bold text-slateblue-900 text-sm sm:text-base">
+              Explain, give examples, compare and give reasons for your opinions
+            </p>
+            <div class="flex items-center gap-2">
+              <span id="selectedCountBadge" class="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
+                0 Topics Selected
+              </span>
+              <button onclick="clearSelectedTopics()" class="px-2.5 py-1 rounded-lg bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold transition cursor-pointer">
+                Reset Picks
+              </button>
+            </div>
+          </div>
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-700">
+            <li class="flex items-start gap-2 bg-white p-3 rounded-lg border border-slateblue-100">
+              <span class="text-slateblue-800 font-extrabold">•</span>
+              <span>In what way/s is this a smart or difficult choice?</span>
+            </li>
+            <li class="flex items-start gap-2 bg-white p-3 rounded-lg border border-slateblue-100">
+              <span class="text-slateblue-800 font-extrabold">•</span>
+              <span>Is this important to you personally? Why – Why not?</span>
+            </li>
+            <li class="flex items-start gap-2 bg-white p-3 rounded-lg border border-slateblue-100">
+              <span class="text-slateblue-800 font-extrabold">•</span>
+              <span>What would happen in society if most people made this choice?</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Interactive Topic Board Grid (14 Topics + Your Own Idea) -->
+      <div id="topicBoardGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+      <!-- End-of-Round Action Bar (Max 3 Repetitions) -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 np-card-shadow flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 id="roundFooterHeading" class="font-bold text-slate-900 text-sm sm:text-base">Finished with Round 1 of 3?</h3>
+          <p id="roundFooterSub" class="text-xs text-slate-600">You can practice up to 3 different cards in total. Each repetition deals a new card you haven't seen yet.</p>
+        </div>
+        <div id="roundFooterActions" class="flex items-center gap-3 shrink-0">
+          <button id="completeRoundBtn" onclick="startNextRound()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-sm transition cursor-pointer">
+            Complete Round &amp; Try Another Card (Round 2/3) →
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== SLIDE-OVER LANGUAGE SUPPORT DRAWER ==================== -->
+  <div id="supportDrawerBackdrop" onclick="toggleSupportDrawer()" class="fixed inset-0 bg-slate-900/40 backdrop-blur-[1px] z-40 hidden transition-opacity"></div>
+  <aside id="supportDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-200 ease-out flex flex-col border-l border-slate-200">
+    <!-- Drawer Header -->
+    <div class="bg-amber-500 text-slate-950 px-5 py-4 flex items-center justify-between">
+      <div>
+        <span class="text-[11px] font-extrabold uppercase tracking-wider bg-slate-950/10 px-2 py-0.5 rounded">Practice Aid Only</span>
+        <h2 class="text-lg font-extrabold mt-0.5">Useful Phrases &amp; Starters</h2>
+      </div>
+      <button onclick="toggleSupportDrawer()" class="p-2 rounded-xl hover:bg-black/10 transition cursor-pointer" aria-label="Close Language Support">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Disclaimer Banner -->
+    <div class="bg-amber-50 border-b border-amber-200 px-5 py-3 text-xs text-amber-950 leading-relaxed">
+      <strong>Practice Aid Only — Not available on the real National Test (Delprov A).</strong> Use these sentence starters to build confidence during practice!
+    </div>
+
+    <!-- Phrase Categories -->
+    <div class="flex-1 overflow-y-auto p-5 space-y-5 text-sm">
+      <div>
+        <h3 class="font-bold text-slateblue-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-slateblue-800"></span>
+          1. Summarizing Your Card (Part 1A)
+        </h3>
+        <ul class="space-y-1.5 text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <li>• "My card is about a person named..."</li>
+          <li>• "The main point on my card is that..."</li>
+          <li>• "He/She thinks it is better to... because..."</li>
+          <li>• "According to my card, many young people..."</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-slateblue-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          2. Giving Your Opinion &amp; Examples
+        </h3>
+        <ul class="space-y-1.5 text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <li>• "I completely agree with this because..."</li>
+          <li>• "I partly agree, but on the other hand..."</li>
+          <li>• "I see it differently because..."</li>
+          <li>• "From my own experience, I know that..."</li>
+          <li>• "For example, a friend of mine..."</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-slateblue-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+          3. Keeping the Conversation Going (Interaktion)
+        </h3>
+        <ul class="space-y-1.5 text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <li>• "What do you think about that?"</li>
+          <li>• "Do you agree with what my card says?"</li>
+          <li>• "Have you ever experienced something similar?"</li>
+          <li>• "Why do you think people make that choice?"</li>
+          <li>• "That's a good point, and I also think..."</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-bold text-slateblue-900 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+          4. Part 2 Discussion Starters
+        </h3>
+        <ul class="space-y-1.5 text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <li>• "I'd like to talk about <em>[topic]</em> first."</li>
+          <li>• "For me personally, this is important because..."</li>
+          <li>• "The biggest advantage / disadvantage is..."</li>
+          <li>• "If everyone in society did this, I think..."</li>
+          <li>• "Shall we pick another topic? Which one do you want?"</li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== HIDDEN TEACHER PRESENTATION MODE (SHIFT + L) ==================== -->
+  <div id="teacherOverlay" class="fixed inset-0 bg-slate-950/90 backdrop-blur-xs z-50 hidden flex flex-col text-white overflow-y-auto">
+    <!-- Top Projector Bar -->
+    <div class="bg-slateblue-900 border-b border-white/15 px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-extrabold uppercase tracking-wider">
+          Teacher Walkthrough Mode
+        </span>
+        <h2 class="text-lg sm:text-xl font-bold">Engelska 1 — Delprov A Speaking Activity Guide</h2>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-300 hidden sm:inline">Shortcut: <kbd class="px-2 py-0.5 bg-white/10 rounded border border-white/20 font-mono">Shift + L</kbd> or <kbd class="px-2 py-0.5 bg-white/10 rounded border border-white/20 font-mono">Esc</kbd></span>
+        <button onclick="toggleTeacherOverlay(false)" class="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-bold transition cursor-pointer">
+          Close Walkthrough ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Walkthrough Slide Content -->
+    <div class="flex-1 max-w-6xl w-full mx-auto px-6 py-8 flex flex-col justify-between gap-8">
+      
+      <!-- Slide Selector Pills -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="setTeacherSlide(0)" id="tSlideBtn-0" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 transition cursor-pointer">1. Pair Setup</button>
+        <button onclick="setTeacherSlide(1)" id="tSlideBtn-1" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 text-white hover:bg-white/20 transition cursor-pointer">2. Step 1: Prep &amp; 1-Word Notes</button>
+        <button onclick="setTeacherSlide(2)" id="tSlideBtn-2" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 text-white hover:bg-white/20 transition cursor-pointer">3. Step 2 (Part 1): Present</button>
+        <button onclick="setTeacherSlide(3)" id="tSlideBtn-3" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 text-white hover:bg-white/20 transition cursor-pointer">4. Step 3 (Part 2): Discuss</button>
+        <button onclick="setTeacherSlide(4)" id="tSlideBtn-4" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 text-white hover:bg-white/20 transition cursor-pointer">5. NP Assessment &amp; Rounds</button>
+      </div>
+
+      <!-- Slide Display Panel -->
+      <div id="teacherSlideContent" class="bg-slateblue-900/90 border border-white/15 rounded-3xl p-8 sm:p-10 shadow-2xl min-h-[340px] flex flex-col justify-center">
+        <!-- Populated dynamically -->
+      </div>
+
+      <!-- Bottom Demo & Reset Bar -->
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3 text-xs sm:text-sm text-slate-300">
+          <span class="font-bold text-white">Teacher Controls:</span>
+          <span>Use these buttons if demonstrating on the projector or resetting a shared Chromebook.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <button onclick="teacherPreviewSample()" class="px-4 py-2 rounded-xl bg-slateblue-700 hover:bg-slateblue-600 text-white text-xs font-bold transition cursor-pointer">
+            Preview Sample Card (Close &amp; Show Card)
+          </button>
+          <button onclick="teacherResetAll()" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition cursor-pointer">
+            Reset All Progress on Device (Back to Round 1)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ==================== DATA: 6 PERSONA CARDS (3 FOR STUDENT A, 3 FOR STUDENT B) ====================
+    // Tailored to accessible A2-B1 everyday vocabulary (no complex financial jargon)
+    const personaCards = [
+      {
+        id: 1,
+        pool: 'A',
+        name: 'Liam',
+        topic: 'Quality Tools & Workwear vs. Cheap Clothes',
+        text: "When I buy work boots, jackets, or tools, I always try to buy good quality that lasts for years. Many people buy super cheap clothes online every month because they follow trends, and then the clothes break after a few washes. Spending a bit more money once is actually cheaper in the long run, and you don't waste materials or fill up trash bins with broken things."
+      },
+      {
+        id: 2,
+        pool: 'B',
+        name: 'Maja',
+        topic: 'Buying Second-Hand vs. Brand New',
+        text: "Almost everything in my room—my desk, my speakers, and my winter jacket—was bought second-hand. Some people think used things are dirty or uncool, and they want everything brand new in a box. But if you check apps or flea markets, you can find great stuff for half the price. It leaves much more money in your pocket for fun things with friends."
+      },
+      {
+        id: 3,
+        pool: 'A',
+        name: 'Noah',
+        topic: 'Moving Out Early vs. Living at Home',
+        text: "A lot of my friends want to rent their own apartment right after high school, even if almost their whole paycheck goes to rent and bills. I think it's much smarter to live at home for a couple of years when you start working. Even if you pay some money to your parents, you can save a lot every month for your own place later. Freedom is nice, but having zero money left is stressful."
+      },
+      {
+        id: 4,
+        pool: 'B',
+        name: 'Sara',
+        topic: 'Saving Every Month vs. Spending Today',
+        text: "Every month when I get my student grant or extra job pay, I move a small amount into my savings account right away. Some friends say I should enjoy life while I'm young and spend my money on food, clothes, and weekend trips. Of course I want to have fun too, but saving for a driver's license or a first apartment gives me peace of mind if something unexpected happens."
+      },
+      {
+        id: 5,
+        pool: 'A',
+        name: 'Anton',
+        topic: 'Owning a Used Car vs. Taking the Bus',
+        text: "Having your own car gives you real freedom, especially if you live outside the city or start work early in the morning. You don't have to wait for buses or trains. On the other hand, owning a car is very expensive—fuel, insurance, tires, and repairs cost thousands of kronor. Sometimes I think taking public transport and saving that money is the smarter choice."
+      },
+      {
+        id: 6,
+        pool: 'B',
+        name: 'Ella',
+        topic: 'Buy Now, Pay Later vs. Paying Cash',
+        text: "Shopping online has become way too easy. With one click, you can order expensive shoes, headphones, or car parts and choose to pay next month instead. The problem is that many young people forget how much they ordered until the bills arrive with extra fees. I believe that if you don't have the money in your account today, you should wait until you do."
+      }
+    ];
+
+    // ==================== DATA: PART 2 TOPIC BOARD (13 TOPICS + YOUR OWN IDEA = 14 BOXES) ====================
+    const discussionTopics = [
+      { id: 1, title: 'Saving for the Future', icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
+      { id: 2, title: 'Buying Second-Hand', icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z' },
+      { id: 3, title: 'Living at Home Longer', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+      { id: 4, title: 'Electric Cars vs. Petrol', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+      { id: 5, title: 'Cheap vs. Quality Clothes', icon: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' },
+      { id: 6, title: 'Having a Part-Time Job', icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' },
+      { id: 7, title: 'Using "Buy Now, Pay Later"', icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z' },
+      { id: 8, title: 'Eating Out vs. Cooking', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+      { id: 9, title: 'Buying Expensive Brands', icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+      { id: 10, title: 'Using Public Transport', icon: 'M8 7h8m-8 4h8m-4 4v3m-4 0h8a2 2 0 002-2V6a2 2 0 00-2-2H8a2 2 0 00-2 2v10a2 2 0 002 2z' },
+      { id: 11, title: 'Repairing Broken Things', icon: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' },
+      { id: 12, title: 'Traveling & Vacations', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064' },
+      { id: 13, title: 'Gaming & Subscriptions', icon: 'M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z' }
+    ];
+
+    // ==================== TEACHER WALKTHROUGH SLIDES ====================
+    const teacherSlides = [
+      {
+        badge: 'Step 0 • Chromebook Pair Setup',
+        title: 'How We Work in Pairs Today',
+        points: [
+          'Sit with a partner on your own Chromebooks.',
+          'One person clicks <strong>Student A</strong>, and the other clicks <strong>Student B</strong>.',
+          'Each student receives <strong>1 unique card</strong> with someone’s opinion on <em>Money, Lifestyle &amp; Choices</em>.',
+          'Do <u>not</u> show your screen to your partner!'
+        ]
+      },
+      {
+        badge: 'Step 1 • Preparation (4 Minutes)',
+        title: 'Read Your Card & Write Single Key Words',
+        points: [
+          'You have <strong>4 minutes</strong> to read your card and prepare.',
+          'Type <strong>one word at a time</strong> into <em>My Key Words</em> (no sentences or phrases allowed—just like the National Test!).',
+          '<strong>Important:</strong> When the timer hits <code>00:00</code> (or you click Finish), <strong>Step 1 locks permanently</strong> and your card text disappears.'
+        ]
+      },
+      {
+        badge: 'Step 2 • Part 1: Present & Interact (5 Minutes)',
+        title: 'Summarize From Your Key Words & React',
+        points: [
+          'In Step 2, you can <strong>only see your own single key words</strong>.',
+          '<strong>A:</strong> Tell your partner in your own words what your card said, whether you agree/disagree, and give examples.',
+          '<strong>B:</strong> Discuss both cards together—compare your reactions and ask follow-up questions!'
+        ]
+      },
+      {
+        badge: 'Step 3 • Part 2: Interact & Discuss (8 Minutes)',
+        title: 'Choose Topics & Discuss Deeper',
+        points: [
+          'Pick <strong>at least 2 topics each</strong> from the Topic Board that you haven’t talked about yet.',
+          'Use the 3 NP guiding questions: <em>Smart/difficult choice? Personal importance? Impact on society?</em>',
+          'Keep the conversation going: ask <em>"What do you think?"</em> and <em>"Why?"</em>'
+        ]
+      },
+      {
+        badge: 'National Test Focus & 3-Round Practice',
+        title: 'What Matters in Delprov A & Practice Rounds',
+        points: [
+          '<strong>Assessment Focus:</strong> Clarity, developing ideas with examples, and active interaction (keeping the talk moving).',
+          '<strong>Practice Aid:</strong> The yellow <em>Language Support</em> button gives helpful starters today, but will <strong>not</strong> be on the real NP.',
+          '<strong>3 Repetitions:</strong> After finishing Round 1, click <em>Try Another Card</em> to practice up to <strong>3 different cards</strong>!'
+        ]
+      }
+    ];
+
+    // ==================== APP STATE ====================
+    const MAX_REPETITIONS = 3;
+    let currentRole = 'A'; // 'A' or 'B'
+    let usedCardIds = { A: [], B: [] };
+    let currentCardId = null;
+    let currentTab = 'prep';
+    let isStep1Locked = false;
+    let studentKeywords = []; // Max 12 single words
+    let selectedTopics = new Set();
+    let customIdeaText = '';
+    let customIdeaSelected = false;
+
+    // Step-specific timers
+    const stepTimers = {
+      prep: { default: 240, remaining: 240, interval: null, running: false },
+      part1: { default: 300, remaining: 300, interval: null, running: false },
+      part2: { default: 480, remaining: 480, interval: null, running: false }
+    };
+
+    let teacherOverlayOpen = false;
+    let currentTeacherSlide = 0;
+
+    // ==================== INITIALIZATION ====================
+    window.addEventListener('DOMContentLoaded', () => {
+      initRoleSession('A');
+      renderTopicBoard();
+      updateAllStepTimerDisplays();
+      renderTeacherSlide();
+    });
+
+    // Global Keyboard Listener for Hidden Teacher Mode (Shift + L) & Esc
+    window.addEventListener('keydown', (e) => {
+      const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+      const isTyping = tag === 'input' || tag === 'textarea' || document.activeElement?.isContentEditable;
+
+      if (!isTyping && e.shiftKey && e.key.toLowerCase() === 'l') {
+        e.preventDefault();
+        toggleTeacherOverlay(!teacherOverlayOpen);
+      } else if (e.key === 'Escape' && teacherOverlayOpen) {
+        toggleTeacherOverlay(false);
+      }
+    });
+
+    // ==================== ROLE & SINGLE-CARD ASSIGNMENT (MAX 3 REPETITIONS) ====================
+    function selectRole(role) {
+      if (role === currentRole && usedCardIds[role].length > 0) return;
+      currentRole = role;
+
+      // Update role toggle styling
+      ['A', 'B'].forEach(r => {
+        const btn = document.getElementById(`roleBtn${r}`);
+        if (r === role) {
+          btn.className = 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition cursor-pointer bg-slateblue-800 text-white border-slateblue-800';
+        } else {
+          btn.className = 'px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition cursor-pointer bg-white text-slate-700 border-slate-300 hover:bg-slate-50';
+        }
+      });
+
+      if (usedCardIds[role].length === 0) {
+        initRoleSession(role);
+      } else {
+        // Restore latest card for this role
+        currentCardId = usedCardIds[role][usedCardIds[role].length - 1];
+        startFreshRoundState(false);
+      }
+    }
+
+    function initRoleSession(role) {
+      currentRole = role;
+      usedCardIds[role] = [];
+      dealNewUnseenCard();
+    }
+
+    function dealNewUnseenCard() {
+      const poolCards = personaCards.filter(c => c.pool === currentRole);
+      const unseen = poolCards.filter(c => !usedCardIds[currentRole].includes(c.id));
+      if (unseen.length === 0) return;
+
+      const picked = unseen[Math.floor(Math.random() * unseen.length)];
+      usedCardIds[currentRole].push(picked.id);
+      currentCardId = picked.id;
+      startFreshRoundState(true);
+    }
+
+    function startNextRound() {
+      if (usedCardIds[currentRole].length >= MAX_REPETITIONS) return;
+      dealNewUnseenCard();
+    }
+
+    function startFreshRoundState(autoStartPrepTimer) {
+      // Unlock Step 1 and reset round inputs
+      isStep1Locked = false;
+      studentKeywords = [];
+      selectedTopics.clear();
+      customIdeaSelected = false;
+      customIdeaText = '';
+
+      // Reset all 3 step timers
+      pauseAllStepTimers();
+      stepTimers.prep.remaining = stepTimers.prep.default;
+      stepTimers.part1.remaining = stepTimers.part1.default;
+      stepTimers.part2.remaining = stepTimers.part2.default;
+      updateAllStepTimerDisplays();
+
+      // Reset UI views
+      document.getElementById('prepUnlockedContainer').classList.remove('hidden');
+      document.getElementById('prepLockedContainer').classList.add('hidden');
+      document.getElementById('prepLockTabIcon').classList.add('hidden');
+      document.getElementById('finishPrepBtn').disabled = false;
+      document.getElementById('finishPrepBtn').classList.remove('opacity-50', 'cursor-not-allowed');
+      document.getElementById('keywordWarning').classList.add('hidden');
+      document.getElementById('keywordInput').value = '';
+
+      renderCurrentCardAndRoundUI();
+      renderStudentKeywords();
+      renderTopicBoard();
+      switchTab('prep');
+
+      if (autoStartPrepTimer) {
+        startStepTimer('prep');
+      }
+    }
+
+    function renderCurrentCardAndRoundUI() {
+      const card = personaCards.find(c => c.id === currentCardId) || personaCards[0];
+      const roundNum = usedCardIds[currentRole].length;
+      const remainingReps = MAX_REPETITIONS - roundNum;
+
+      // Badges & Round Counter
+      document.getElementById('roundTrackerBadge').textContent = `Round ${roundNum} / ${MAX_REPETITIONS}`;
+      document.getElementById('currentCardBadge').textContent = `Student ${currentRole} • Active Card Assigned`;
+      document.getElementById('prepRoleRoundLabel').textContent = `Student ${currentRole} • Round ${roundNum} of ${MAX_REPETITIONS}`;
+
+      // Top "Try Another Card" button state
+      const dealBtn = document.getElementById('dealNextBtn');
+      const dealBtnText = document.getElementById('dealNextBtnText');
+      if (remainingReps > 0) {
+        dealBtn.disabled = false;
+        dealBtnText.textContent = `Try Another Card (${remainingReps} left)`;
+      } else {
+        dealBtn.disabled = true;
+        dealBtnText.textContent = `Max 3 Rounds Reached`;
+      }
+
+      // Prep Card Details
+      document.getElementById('prepCardTitle').textContent = `${card.name}'s Perspective`;
+      document.getElementById('prepCardTopicTag').textContent = card.topic;
+      document.getElementById('prepAvatar').textContent = card.name.charAt(0);
+      document.getElementById('prepPersonaName').textContent = `${card.name}:`;
+      document.getElementById('prepCardText').textContent = `"${card.text}"`;
+
+      // Part 1 Header (Never reveals original text)
+      document.getElementById('p1PersonaHeader').textContent = `Your Key Word Notes — ${card.name} (${card.topic})`;
+
+      // Part 2 Bottom Round Footer
+      const footerHeading = document.getElementById('roundFooterHeading');
+      const footerSub = document.getElementById('roundFooterSub');
+      const completeBtn = document.getElementById('completeRoundBtn');
+
+      if (remainingReps > 0) {
+        footerHeading.textContent = `Finished with Round ${roundNum} of ${MAX_REPETITIONS}?`;
+        footerSub.textContent = `You have ${remainingReps} practice repetition${remainingReps === 1 ? '' : 's'} left with a new, unseen card.`;
+        completeBtn.classList.remove('hidden');
+        completeBtn.textContent = `Complete Round & Try Another Card (Round ${roundNum + 1}/${MAX_REPETITIONS}) →`;
+      } else {
+        footerHeading.textContent = `All 3 Practice Rounds Completed!`;
+        footerSub.textContent = `Great job! You have practiced all 3 cards in the Student ${currentRole} pool.`;
+        completeBtn.classList.add('hidden');
+      }
+    }
+
+    // ==================== STEP 1: STRICT SINGLE-WORD KEY WORD BUILDER & LOCKOUT ====================
+    function sanitizeKeywordInput(inputEl) {
+      const warningEl = document.getElementById('keywordWarning');
+      if (/\s/.test(inputEl.value)) {
+        // Strip spaces immediately and show friendly single-word reminder
+        inputEl.value = inputEl.value.replace(/\s+/g, '');
+        warningEl.classList.remove('hidden');
+      } else {
+        warningEl.classList.add('hidden');
+      }
+    }
+
+    function handleAddKeyword(e) {
+      e.preventDefault();
+      if (isStep1Locked) return;
+
+      const inputEl = document.getElementById('keywordInput');
+      const warningEl = document.getElementById('keywordWarning');
+      const raw = inputEl.value.trim();
+
+      if (!raw) return;
+
+      // Block if spaces or more than one word
+      if (/\s/.test(raw)) {
+        warningEl.classList.remove('hidden');
+        inputEl.value = raw.split(/\s+/)[0];
+        return;
+      }
+
+      if (studentKeywords.length >= 12) {
+        warningEl.textContent = 'Maximum 12 single key words reached!';
+        warningEl.classList.remove('hidden');
+        return;
+      }
+
+      // Clean trailing punctuation while keeping apostrophes/hyphens (e.g., driver's, second-hand)
+      const cleanWord = raw.replace(/^[^a-zA-Z0-9åäöÅÄÖ]+|[^a-zA-Z0-9åäöÅÄÖ'-]+$/g, '');
+      if (!cleanWord) return;
+
+      studentKeywords.push(cleanWord);
+      inputEl.value = '';
+      warningEl.textContent = 'One word only — no phrases or sentences, just like on the National Test!';
+      warningEl.classList.add('hidden');
+      renderStudentKeywords();
+    }
+
+    function removeStudentKeyword(index) {
+      if (isStep1Locked) return;
+      studentKeywords.splice(index, 1);
+      renderStudentKeywords();
+    }
+
+    function renderStudentKeywords() {
+      document.getElementById('keywordCountBadge').textContent = `${studentKeywords.length} / 12 words`;
+
+      // Render inside Step 1 (removable pills while unlocked)
+      const prepListEl = document.getElementById('studentKeywordsList');
+      if (studentKeywords.length === 0) {
+        prepListEl.innerHTML = `<span class="text-xs text-slate-500 italic">No key words added yet. Add single words you want to remember for Step 2!</span>`;
+      } else {
+        prepListEl.innerHTML = studentKeywords.map((word, idx) => `
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white text-slateblue-900 text-xs sm:text-sm font-bold border border-amber-300 shadow-2xs">
+            <span>${escapeHtml(word)}</span>
+            ${!isStep1Locked ? `<button type="button" onclick="removeStudentKeyword(${idx})" class="text-slate-400 hover:text-rose-600 font-extrabold cursor-pointer" aria-label="Remove word">×</button>` : ''}
+          </span>
+        `).join('');
+      }
+
+      // Render inside Step 2 (read-only memory prompts; original card is never shown)
+      const p1ListEl = document.getElementById('p1StudentKeywordsDisplay');
+      if (studentKeywords.length === 0) {
+        p1ListEl.innerHTML = `<p class="text-sm text-slate-600 italic">You didn't save any key words during Step 1. Summarize what you remember from your card in your own words!</p>`;
+      } else {
+        p1ListEl.innerHTML = studentKeywords.map(word => `
+          <span class="px-4 py-2 rounded-xl bg-white text-slateblue-900 text-sm sm:text-base font-extrabold border-2 border-amber-300 shadow-2xs">
+            ${escapeHtml(word)}
+          </span>
+        `).join('');
+      }
+    }
+
+    function lockStep1() {
+      if (isStep1Locked) return;
+      isStep1Locked = true;
+      pauseStepTimer('prep');
+
+      // Hide original card and show locked notice in Step 1
+      document.getElementById('prepUnlockedContainer').classList.add('hidden');
+      document.getElementById('prepLockedContainer').classList.remove('hidden');
+      document.getElementById('prepLockTabIcon').classList.remove('hidden');
+
+      const finishBtn = document.getElementById('finishPrepBtn');
+      finishBtn.disabled = true;
+      finishBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+      renderStudentKeywords();
+    }
+
+    function lockStep1AndAdvance() {
+      lockStep1();
+      switchTab('part1');
+    }
+
+    // ==================== TAB NAVIGATION ====================
+    function switchTab(tabName) {
+      currentTab = tabName;
+      const tabs = ['prep', 'part1', 'part2'];
+      
+      tabs.forEach(t => {
+        const panel = document.getElementById(`tab-${t}`);
+        const btn = document.getElementById(`tabBtn-${t}`);
+        if (t === tabName) {
+          panel.classList.remove('hidden');
+          btn.className = 'px-4 py-2.5 rounded-t-xl font-bold text-xs sm:text-sm border-t border-x transition whitespace-nowrap cursor-pointer bg-white text-slateblue-800 border-slate-200 shadow-sm flex items-center gap-1.5';
+        } else {
+          panel.classList.add('hidden');
+          btn.className = 'px-4 py-2.5 rounded-t-xl font-semibold text-xs sm:text-sm border-t border-x transition whitespace-nowrap cursor-pointer bg-slate-200/70 text-slate-600 border-transparent hover:bg-white/60 flex items-center gap-1.5';
+        }
+      });
+
+      // Auto-start Part 1 or Part 2 timer if entering for the first time at full duration
+      if (tabName === 'part1' && !stepTimers.part1.running && stepTimers.part1.remaining === stepTimers.part1.default) {
+        pauseStepTimer('prep');
+        startStepTimer('part1');
+      } else if (tabName === 'part2' && !stepTimers.part2.running && stepTimers.part2.remaining === stepTimers.part2.default) {
+        pauseStepTimer('part1');
+        startStepTimer('part2');
+      }
+    }
+
+    // ==================== EMBEDDED STEP COUNTDOWN TIMERS ====================
+    function toggleStepTimer(step) {
+      if (step === 'prep' && isStep1Locked) return;
+      if (stepTimers[step].running) {
+        pauseStepTimer(step);
+      } else {
+        startStepTimer(step);
+      }
+    }
+
+    function startStepTimer(step) {
+      if (step === 'prep' && isStep1Locked) return;
+      const t = stepTimers[step];
+      if (t.remaining <= 0) t.remaining = t.default;
+
+      t.running = true;
+      updateStepTimerButton(step);
+
+      clearInterval(t.interval);
+      t.interval = setInterval(() => {
+        if (t.remaining > 0) {
+          t.remaining--;
+          updateStepTimerDisplay(step);
+          if (t.remaining === 0) {
+            pauseStepTimer(step);
+            if (step === 'prep') {
+              lockStep1();
+            }
+          }
+        }
+      }, 1000);
+    }
+
+    function pauseStepTimer(step) {
+      const t = stepTimers[step];
+      t.running = false;
+      clearInterval(t.interval);
+      updateStepTimerButton(step);
+    }
+
+    function pauseAllStepTimers() {
+      ['prep', 'part1', 'part2'].forEach(s => pauseStepTimer(s));
+    }
+
+    function resetStepTimer(step) {
+      if (step === 'prep' && isStep1Locked) return;
+      pauseStepTimer(step);
+      stepTimers[step].remaining = stepTimers[step].default;
+      updateStepTimerDisplay(step);
+    }
+
+    function updateStepTimerButton(step) {
+      const btn = document.getElementById(`timerToggleBtn-${step}`);
+      if (!btn) return;
+      if (stepTimers[step].running) {
+        btn.textContent = 'Pause';
+        btn.className = btn.className.replace(/bg-emerald-\d+ hover:bg-emerald-\d+ text-white/, 'bg-amber-500 hover:bg-amber-400 text-slate-950');
+      } else {
+        btn.textContent = 'Start';
+        btn.className = btn.className.replace(/bg-amber-\d+ hover:bg-amber-\d+ text-slate-950/, 'bg-emerald-600 hover:bg-emerald-700 text-white');
+      }
+    }
+
+    function updateStepTimerDisplay(step) {
+      const t = stepTimers[step];
+      const mins = Math.floor(t.remaining / 60);
+      const secs = t.remaining % 60;
+      const el = document.getElementById(`timerDisplay-${step}`);
+      if (!el) return;
+
+      el.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+      if (t.remaining <= 30 && t.remaining > 0) {
+        el.className = 'font-mono text-xl font-extrabold tabular-nums text-amber-400';
+      } else if (t.remaining === 0) {
+        el.className = 'font-mono text-xl font-extrabold tabular-nums text-rose-400';
+      } else {
+        el.className = step === 'part2'
+          ? 'font-mono text-base font-extrabold tabular-nums text-white'
+          : 'font-mono text-xl font-extrabold tabular-nums text-white';
+      }
+    }
+
+    function updateAllStepTimerDisplays() {
+      ['prep', 'part1', 'part2'].forEach(s => updateStepTimerDisplay(s));
+    }
+
+    // ==================== PART 2 INTERACTIVE TOPIC BOARD ====================
+    function renderTopicBoard() {
+      const grid = document.getElementById('topicBoardGrid');
+      
+      let html = discussionTopics.map(topic => {
+        const isSelected = selectedTopics.has(topic.id);
+        const cardClasses = isSelected
+          ? 'bg-emerald-50 border-2 border-emerald-600 text-emerald-950 shadow-sm'
+          : 'bg-white border border-slate-200 hover:border-slateblue-400 text-slate-800 np-card-shadow';
+        
+        const iconBg = isSelected
+          ? 'bg-emerald-600 text-white'
+          : 'bg-slateblue-50 text-slateblue-800';
+
+        return `
+          <button onclick="toggleTopic(${topic.id})" class="topic-pill rounded-2xl p-4 text-left flex flex-col justify-between min-h-[112px] cursor-pointer ${cardClasses}">
+            <div class="flex items-start justify-between gap-2 w-full">
+              <div class="w-8 h-8 rounded-xl ${iconBg} flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${topic.icon}"></path>
+                </svg>
+              </div>
+              ${isSelected ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-600 text-white">Selected</span>` : ''}
+            </div>
+            <span class="font-bold text-xs sm:text-sm leading-snug mt-3 block">${topic.title}</span>
+          </button>
+        `;
+      }).join('');
+
+      // 14th Box: "Your own idea?"
+      const customClasses = customIdeaSelected
+        ? 'bg-emerald-50 border-2 border-emerald-600 text-emerald-950 shadow-sm'
+        : 'bg-slateblue-50/70 border-2 border-dashed border-slateblue-300 hover:border-slateblue-500 text-slateblue-900';
+
+      html += `
+        <div class="topic-pill rounded-2xl p-4 flex flex-col justify-between min-h-[112px] ${customClasses}">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-slateblue-800">Your own idea?</span>
+            <button onclick="toggleCustomIdea()" class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase cursor-pointer ${customIdeaSelected ? 'bg-emerald-600 text-white' : 'bg-slateblue-200 text-slateblue-800 hover:bg-slateblue-300'}">
+              ${customIdeaSelected ? 'Selected' : 'Select'}
+            </button>
+          </div>
+          <input 
+            type="text" 
+            value="${escapeHtml(customIdeaText)}"
+            oninput="updateCustomIdea(this.value)"
+            placeholder="Type a topic..."
+            class="mt-2 w-full text-xs sm:text-sm bg-white border border-slate-300 rounded-xl px-2.5 py-1.5 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-slateblue-800"
+          />
+        </div>
+      `;
+
+      grid.innerHTML = html;
+      updateSelectedCount();
+    }
+
+    function toggleTopic(id) {
+      if (selectedTopics.has(id)) {
+        selectedTopics.delete(id);
+      } else {
+        selectedTopics.add(id);
+      }
+      renderTopicBoard();
+    }
+
+    function toggleCustomIdea() {
+      customIdeaSelected = !customIdeaSelected;
+      renderTopicBoard();
+    }
+
+    function updateCustomIdea(val) {
+      customIdeaText = val;
+      if (val.trim().length > 0 && !customIdeaSelected) {
+        customIdeaSelected = true;
+        renderTopicBoard();
+        const inputs = document.querySelectorAll('#topicBoardGrid input');
+        if (inputs.length) {
+          const inp = inputs[0];
+          inp.focus();
+          inp.setSelectionRange(inp.value.length, inp.value.length);
+        }
+      }
+    }
+
+    function clearSelectedTopics() {
+      selectedTopics.clear();
+      customIdeaSelected = false;
+      customIdeaText = '';
+      renderTopicBoard();
+    }
+
+    function updateSelectedCount() {
+      const total = selectedTopics.size + (customIdeaSelected ? 1 : 0);
+      document.getElementById('selectedCountBadge').textContent = `${total} Topic${total === 1 ? '' : 's'} Selected`;
+    }
+
+    // ==================== DRAWER & HIDDEN TEACHER OVERLAY (SHIFT + L) ====================
+    function toggleSupportDrawer() {
+      const drawer = document.getElementById('supportDrawer');
+      const backdrop = document.getElementById('supportDrawerBackdrop');
+      const isClosed = drawer.classList.contains('translate-x-full');
+
+      if (isClosed) {
+        drawer.classList.remove('translate-x-full');
+        backdrop.classList.remove('hidden');
+      } else {
+        drawer.classList.add('translate-x-full');
+        backdrop.classList.add('hidden');
+      }
+    }
+
+    function toggleTeacherOverlay(show) {
+      teacherOverlayOpen = show;
+      const overlay = document.getElementById('teacherOverlay');
+      if (show) {
+        overlay.classList.remove('hidden');
+        renderTeacherSlide();
+      } else {
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function setTeacherSlide(index) {
+      currentTeacherSlide = index;
+      renderTeacherSlide();
+    }
+
+    function renderTeacherSlide() {
+      teacherSlides.forEach((_, idx) => {
+        const btn = document.getElementById(`tSlideBtn-${idx}`);
+        if (!btn) return;
+        btn.className = idx === currentTeacherSlide
+          ? 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 text-slate-950 transition cursor-pointer'
+          : 'px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/10 text-white hover:bg-white/20 transition cursor-pointer';
+      });
+
+      const slide = teacherSlides[currentTeacherSlide];
+      const container = document.getElementById('teacherSlideContent');
+      container.innerHTML = `
+        <div class="space-y-6">
+          <div>
+            <span class="inline-block px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-extrabold uppercase tracking-wider mb-3">
+              ${slide.badge}
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              ${slide.title}
+            </h3>
+          </div>
+          <ul class="space-y-4 text-base sm:text-lg text-slate-100 leading-relaxed">
+            ${slide.points.map(pt => `
+              <li class="flex items-start gap-3.5 bg-white/5 p-4 rounded-2xl border border-white/10">
+                <span class="w-7 h-7 rounded-xl bg-amber-500 text-slate-950 font-extrabold text-sm flex items-center justify-center shrink-0 mt-0.5">✓</span>
+                <span>${pt}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    function teacherPreviewSample() {
+      toggleTeacherOverlay(false);
+      switchTab('prep');
+    }
+
+    function teacherResetAll() {
+      usedCardIds = { A: [], B: [] };
+      initRoleSession('A');
+      selectRole('A');
+      toggleTeacherOverlay(false);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+  </script>
+</body>
+</html>
